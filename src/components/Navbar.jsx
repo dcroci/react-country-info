@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function Navbar({ isDarkMode, onToggleDarkMode }) {
   return (
-    <nav className="bg-gray-700 py-8">
+    <nav className={`${isDarkMode ? 'bg-gray-700' : 'bg-gray-400'} py-8`}>
       <div className="flex justify-between w-11/12 mx-auto">
         <h1 className="text-xl font-bold">Where in the world?</h1>
         <h2 className="cursor-pointer" onClick={onToggleDarkMode}>

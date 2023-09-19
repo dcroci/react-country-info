@@ -1,20 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export default function CountryList({ filterBy, searchValue }) {
-  const [countries, setCountries] = useState([]);
+export default function CountryList({
+  filterBy,
+  searchValue,
+  togglePages,
+  countries,
+}) {
   const [countryElements, setCountryElements] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('https://restcountries.com/v3.1/all')
-      .then((response) => {
-        setCountries(response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }, []);
 
   useEffect(() => {
     const filteredCountries = countries.filter((country) => {
@@ -36,7 +28,8 @@ export default function CountryList({ filterBy, searchValue }) {
     const elements = filteredCountries.map((country) => (
       <div
         key={country.name.common}
-        className="flex flex-col justify-between bg-gray-700 cursor-pointer hover:scale-105"
+        className={`flex flex-col justify-between bg-gray-700 cursor-pointer hover:scale-105`}
+        onClick={togglePages}
       >
         <img src={country.flags.png} alt="" className="w-full h-48" />
         <h3 className="px-4 py-4 text-xl">

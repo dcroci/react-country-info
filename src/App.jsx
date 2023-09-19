@@ -1,3 +1,13 @@
+import CountryList from './components/CountryList';
+import Navbar from './components/Navbar';
+import Search from './components/Search';
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div className="text-white bg-gray-800">
+      <Navbar />
+      <Search />
+      <CountryList />
+    </div>
+  );
 }

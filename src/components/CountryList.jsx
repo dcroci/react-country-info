@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export default function CountryList({ filterBy }) {
+export default function CountryList({ filterBy, searchValue }) {
   const [countries, setCountries] = useState([]);
   const [countryElements, setCountryElements] = useState([]);
 
@@ -36,7 +36,7 @@ export default function CountryList({ filterBy }) {
     const elements = filteredCountries.map((country) => (
       <div
         key={country.name.common}
-        className="flex flex-col justify-between bg-gray-600 m-3"
+        className="flex flex-col justify-between bg-gray-700 cursor-pointer hover:scale-105"
       >
         <img src={country.flags.png} alt="" className="w-full h-48" />
         <h3 className="px-4 py-4 text-xl">
@@ -62,7 +62,7 @@ export default function CountryList({ filterBy }) {
   }, [countries, filterBy]);
 
   return (
-    <div className="grid grid-cols-4 gap-4 w-11/12 mx-auto">
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto">
       {countryElements}
     </div>
   );

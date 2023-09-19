@@ -3,6 +3,7 @@ import axios from 'axios';
 import CountryList from './components/CountryList';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
+import SpecificCountry from './components/SpecificCountry';
 
 export default function App() {
   const [filterBy, setFilterBy] = useState('filter');
@@ -21,6 +22,7 @@ export default function App() {
         console.error('Error:', error);
       });
   }, []);
+
   function togglePages() {
     setShowHomePage((prevState) => !prevState);
     setShowSpecificCountry((prevState) => !prevState);
@@ -58,6 +60,7 @@ export default function App() {
       <div className={`text-white ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <Navbar isDarkMode={isDarkMode} onToggleDarkMode={handleDarkMode} />
         <p onClick={togglePages}>Go back</p>
+        <SpecificCountry />
       </div>
     );
   }

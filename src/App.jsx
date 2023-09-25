@@ -3,12 +3,12 @@ import axios from 'axios';
 import CountryList from './components/CountryList';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
+import Footer from './components/Footer';
 
 export default function App() {
   const [filterBy, setFilterBy] = useState('filter');
   const [searchValue, setSearchValue] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [showSpecificCountry, setShowSpecificCountry] = useState(false);
   const [countries, setCountries] = useState([]);
   useEffect(() => {
     axios
@@ -48,14 +48,7 @@ export default function App() {
         isDarkMode={isDarkMode}
         countries={countries}
       />
-    </div>
-  );
-  // } else if (showSpecificCountry) {
-  return (
-    <div className={`text-white ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
-      <Navbar isDarkMode={isDarkMode} onToggleDarkMode={handleDarkMode} />
-      <p onClick={togglePages}>Go back</p>
-      <SpecificCountry />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

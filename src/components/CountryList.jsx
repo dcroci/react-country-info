@@ -29,7 +29,7 @@ export default function CountryList({
       <div
         key={country.name.common}
         className={`${
-          isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+          isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
         } flex flex-col justify-between cursor-pointer hover:scale-105`}
       >
         <img src={country.flags.png} alt="" className="w-full h-48" />
@@ -56,7 +56,7 @@ export default function CountryList({
   }, [countries, filterBy, isDarkMode]);
 
   return (
-    <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto">
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto pb-8">
       {countryElements}
     </div>
   );

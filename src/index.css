@@ -4,5 +4,9 @@
 * {
   box-sizing: border-box;
 }
-@media (max-width: 800px) {
+select:invalid {
+  color: #949ba7;
+}
+select:valid {
+  color: #949ba7;
 }

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 export default function CountryList({
   filterBy,
-  searchValue,
-  togglePages,
+
   countries,
+  isDarkMode,
 }) {
   const [countryElements, setCountryElements] = useState([]);
 
@@ -28,8 +28,9 @@ export default function CountryList({
     const elements = filteredCountries.map((country) => (
       <div
         key={country.name.common}
-        className={`flex flex-col justify-between bg-gray-700 cursor-pointer hover:scale-105`}
-        onClick={togglePages}
+        className={`${
+          isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+        } flex flex-col justify-between cursor-pointer hover:scale-105`}
       >
         <img src={country.flags.png} alt="" className="w-full h-48" />
         <h3 className="px-4 py-4 text-xl">
@@ -52,7 +53,7 @@ export default function CountryList({
     ));
 
     setCountryElements(elements);
-  }, [countries, filterBy]);
+  }, [countries, filterBy, isDarkMode]);
 
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto">

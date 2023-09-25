@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-export default function Filter({ onChangeFilter }) {
+export default function Filter({ onChangeFilter, isDarkMode }) {
   return (
     <select
-      className="text-white bg-gray-700"
+      className={`text-white bg-gray-700 p-6 ${
+        isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
+      }`}
       name="region"
       id="region"
       onChange={onChangeFilter}

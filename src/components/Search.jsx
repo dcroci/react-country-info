@@ -11,7 +11,7 @@ export default function Search({
     <div>
       <div className="flex justify-between w-11/12 mx-auto py-8">
         <input
-          className={`text-white ${
+          className={` ${
             isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
           } p-4 w-3/6`}
           type="text"

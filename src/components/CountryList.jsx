@@ -7,6 +7,7 @@ export default function CountryList({
   isDarkMode,
   searchValue,
 }) {
+  const [countryElements, setCountryElements] = useState([]);
   useEffect(() => {
     const filteredCountries = countries.filter((country) => {
       if (filterBy === 'africa') {
@@ -57,11 +58,19 @@ export default function CountryList({
     setCountryElements(countryElements);
   }, [countries, filterBy, isDarkMode, searchValue]);
 
-  const [countryElements, setCountryElements] = useState([]);
-
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto pb-8">
-      {countryElements}
+      {countryElements.length > 0 ? (
+        countryElements
+      ) : (
+        <p
+          className={`col-start-1 col-end-5 mx-auto ${
+            isDarkMode ? ' text-white' : ' text-black'
+          }`}
+        >
+          No results found for "{searchValue}"
+        </p>
+      )}
     </div>
   );
 }

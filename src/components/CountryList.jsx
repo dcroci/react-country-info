@@ -1,13 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 
 export default function CountryList({
   filterBy,
-
   countries,
   isDarkMode,
+  searchValue,
 }) {
-  const [countryElements, setCountryElements] = useState([]);
-
   useEffect(() => {
     const filteredCountries = countries.filter((country) => {
       if (filterBy === 'africa') {
@@ -25,7 +24,13 @@ export default function CountryList({
       }
     });
 
-    const elements = filteredCountries.map((country) => (
+    const filteredBySearch = searchValue
+      ? filteredCountries.filter((country) =>
+          country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+        )
+      : filteredCountries;
+
+    const countryElements = filteredBySearch.map((country) => (
       <div
         key={country.name.common}
         className={`${
@@ -37,23 +42,22 @@ export default function CountryList({
           <span className="font-bold">{country.name.common}</span>
         </h3>
         <p className="px-4 p-2">
-          {' '}
           <span className="font-bold">Population:</span> {country.population}
         </p>
         <p className="px-4 pb-2">
-          {' '}
           <span className="font-bold">Region:</span> {country.region}
         </p>
         <p className="px-4 pb-2">
-          {' '}
           <span className="font-bold">Capital: </span>
           {country.capital}
         </p>
       </div>
     ));
 
-    setCountryElements(elements);
-  }, [countries, filterBy, isDarkMode]);
+    setCountryElements(countryElements);
+  }, [countries, filterBy, isDarkMode, searchValue]);
+
+  const [countryElements, setCountryElements] = useState([]);
 
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto pb-8">

@@ -3,6 +3,8 @@
 @tailwind utilities;
 * {
   box-sizing: border-box;
+  transition: all 0.5s;
+  scroll-behavior: smooth;
 }
 select:invalid {
   color: #949ba7;

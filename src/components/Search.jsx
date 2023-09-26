@@ -1,4 +1,4 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
 import Filter from './Filter';
 
 export default function Search({

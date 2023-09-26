@@ -29,10 +29,7 @@ export default function App() {
   }
   function handleOnChange(e) {
     setSearchValue(e.target.value);
-    console.log(searchValue);
   }
-  console.log(filterBy);
-  // if (showHomePage) {
   return (
     <div className={`text-white ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
       <Navbar isDarkMode={isDarkMode} onToggleDarkMode={handleDarkMode} />

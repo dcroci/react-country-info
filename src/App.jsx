@@ -31,7 +31,9 @@ export default function App() {
     setSearchValue(e.target.value);
   }
   return (
-    <div className={`text-white ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
+    <div
+      className={`text-white  ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}
+    >
       <Navbar isDarkMode={isDarkMode} onToggleDarkMode={handleDarkMode} />
       <Search
         onChangeFilter={handleChangeFilter}

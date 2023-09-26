@@ -38,7 +38,7 @@ export default function CountryList({
           isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
         } flex flex-col justify-between cursor-pointer hover:scale-105`}
       >
-        <img src={country.flags.png} alt="" className="w-full h-48" />
+        <img src={country.flags.png} alt="" className="w-full h-52" />
         <h3 className="px-4 py-4 text-xl">
           <span className="font-bold">{country.name.common}</span>
         </h3>
@@ -59,7 +59,7 @@ export default function CountryList({
   }, [countries, filterBy, isDarkMode, searchValue]);
 
   return (
-    <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto pb-8">
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-11/12 mx-auto pb-8">
       {countryElements.length > 0 ? (
         countryElements
       ) : (

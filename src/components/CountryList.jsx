@@ -5,6 +5,7 @@ export default function CountryList({
   filterBy,
   countries,
   isDarkMode,
+  visibleCountries,
   searchValue,
 }) {
   const [countryElements, setCountryElements] = useState([]);
@@ -29,14 +30,14 @@ export default function CountryList({
       ? filteredCountries.filter((country) =>
           country.name.common.toLowerCase().includes(searchValue.toLowerCase())
         )
-      : filteredCountries;
+      : visibleCountries;
 
     const countryElements = filteredBySearch.map((country) => (
       <div
         key={country.name.common}
         className={`${
-          isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
-        } flex flex-col justify-between cursor-pointer hover:scale-105`}
+          isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+        } flex flex-col justify-between hover:scale-105`}
       >
         <img src={country.flags.png} alt="" className="w-full h-52" />
         <h3 className="px-4 py-4 text-xl">
@@ -56,7 +57,7 @@ export default function CountryList({
     ));
 
     setCountryElements(countryElements);
-  }, [countries, filterBy, isDarkMode, searchValue]);
+  }, [countries, filterBy, isDarkMode, searchValue, visibleCountries]);
 
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-11/12 mx-auto pb-8">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import CountryList from './components/CountryList';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
+import MoreResultsButton from './components/MoreResultsButton';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -10,16 +11,19 @@ export default function App() {
   const [searchValue, setSearchValue] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [countries, setCountries] = useState([]);
+  const [searchResultCount, setSearchResultCount] = useState(50);
+  const [searchResultCountries, setSearchResultCountries] = useState([]);
   useEffect(() => {
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
         setCountries(response.data);
+        setSearchResultCountries(response.data.slice(0, searchResultCount));
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-  }, []);
+  }, [searchResultCount]);
 
   function handleDarkMode() {
     setIsDarkMode((prevState) => !prevState);
@@ -46,6 +50,13 @@ export default function App() {
         searchValue={searchValue}
         isDarkMode={isDarkMode}
         countries={countries}
+        visibleCountries={searchResultCountries}
+      />
+      <MoreResultsButton
+        count={searchResultCount}
+        incrementCount={setSearchResultCount}
+        isDarkMode={isDarkMode}
+        filterBy={filterBy}
       />
       <Footer isDarkMode={isDarkMode} />
     </div>

@@ -51,6 +51,7 @@ export default function App() {
         isDarkMode={isDarkMode}
         countries={countries}
         visibleCountries={searchResultCountries}
+        resultCount={searchResultCount}
       />
       <MoreResultsButton
         count={searchResultCount}

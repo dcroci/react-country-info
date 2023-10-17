@@ -44,7 +44,7 @@ export default function CountryList({
         <div
           key={country.name.common}
           className={`${
-            isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'
+            isDarkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'
           } flex flex-col justify-between hover:scale-105`}
         >
           <img src={country.flags.png} alt="" className="w-full h-52" />
